@@ -1,13 +1,298 @@
-body {
+/*
+* Template Name     : TakaFully
+* Start             : 18-1-2021 11:30Am
+* End               : 
+* Last Update       : 
+* Version           : 1.0
+* Contact Us        : mohammedmmodather144@gmail.com
+*/
+
+/* 
+* 1- Genral Template
+* 2- Style Section
+*  2.0- Nav Header
+*  2.1- Personal Information
+* 3- Commen Style
+*  3.0- Main Button
+*  3.2- Secondry Button 
+*  3.3- Geral Anchor Tage 
+*/
+/* 1- Genral Style */
+*{
+  box-sizing: border-box;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+}
+body{
+  font-family: 'Cairo', sans-serif !important;
+  background-color: #F8F8F8;
+}
+html{
+  --mainColor:#ff9810;
+  --SecondryColor:#E2E2E2;
+}
+/* 2- Style Section */
+/*  2.0- Nav Header */
+.nav-header{
+  padding-top: .5rem;
+  padding-bottom: .5rem;
+  box-shadow: 0 0 12px #F4F4F4;
+  background-color: #FFFFFF;
+}
+.nav-header .logo img{
+  width: 100px;
+}
+/*  2.1- Personal Information */
+.personal-information{
+  width: 100%;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 1rem;
+}
+.personal-information .title-header{
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--mainColor);
+  margin-bottom: 2rem;
+}
+.personal-information .form-info{
+  width: 100%;
+  box-shadow: 0 0 12px #FFFFFF;
+  background-color: #FFFFFF;
+  border-radius: 1rem;
+  padding: 0rem 1rem !important;
+  padding-bottom: 1rem;
+}
+.personal-information .form-info .left,
+.personal-information .form-info .right{
+  padding-top: 3rem;
+}
+.personal-information .form-info .left{
+  border-top-left-radius: 1rem;
+}
+.personal-information .form-info .right{
+  border-top-right-radius: 1rem;
+}
+.personal-information.succces .form-info{
+  width: 45vw;
+  padding: 1rem !important;
+  margin: auto;
+}
+.personal-information .form-info .doller{
+  font-size: .8rem;
+  margin-top: .2rem;
+  font-weight: bold;
+  color: var(--mainColor);
+}
+.personal-information .form-info label{
+  text-align: left;
+  display: block;
+  padding-left: .5rem;
+  color: #606060;
+  font-weight: 500;
+  font-size: .8rem;
+}
+.personal-information .form-info textarea,
+.personal-information .form-info input{
+ background-color: #F8F8F8;
+ resize: none;
+ font-size: .8rem;
+ border-radius: .5rem;
+ border: none;
+ padding: .6rem;
+}
+.personal-information .form-info .item{
+  border-bottom: 1px solid #f5f5f5;
+  padding: .7rem;
+}
+.personal-information .success {
+  margin-bottom: 2rem;
+}
+.personal-information .success{
+  margin: auto;
+  margin-bottom: 2rem;
+  width: 100px;
+  height: 100px;
+  color: var(--mainColor);
+  border: 1px solid var(--mainColor);
+  line-height: 100px;
+  border-radius: 50%;
+}
+.personal-information .success svg{
+  width: 3rem;
+  height: 3rem;
+}
+.personal-information .fa-edit {
+  color: var(--mainColor);
+  cursor: pointer;
+}
+.personal-information .edit-paymet{
+  background-color: #ffffff !important;
+  width: 40px ;
+  padding: 0 ;
+}
+.title {
+  font-weight: 500;
+  font-size: 14px;
+}
+.desc{
+  font-size: 12px;
+}
+/* .form-control {
+  display: inline-block;
+  width: 92%;
+}
+input + span {
+  padding-left: 2%;
+}
+.intl-tel-input.allow-dropdown .selected-flag {
+  padding-left: 10px;
+  width: 46px;
+} */
+/* input:focus span::after{
+  display: inline;
+}
+input:invalid+span:after {
+  display: none;
+  position: absolute; content: '✖';
+  padding-left: 5px;
+  color: #8b0000;
+}
+.intl-tel-input:valid::after,
+input:valid+span:after {
+  position: absolute;
+  content: '✓';
+  padding-left: 5px;
+  color: #009000;
+} */
+
+
+
+
+
+
+
+
+
+
+/* 3- Commen Style */
+/* 3.0- Place Holder */
+::placeholder{
+  color: #E2E2E2;
+  font-size: .7rem;
+}
+/* 3.1- Main Button */
+.button-main{
+  margin-left: auto;
+  background-color: var(--mainColor);
+  width: 120px;
+  margin-top: 1.5rem;
+  font-weight: 500;
+  padding: .6rem;
+  border-radius: .6rem;
+  font-family: 'Cairo', sans-serif !important;
+  color: #f5f5f5;
+  border: none;
+  margin-bottom: 1.3rem;
+}
+.button-main:hover{
+  color: #ffffff;
+}
+/* 3.2- Secondry Button */
+.button-secondry{
+  margin-left: auto;
+  background-color: transparent;
+  width: 120px;
+  margin-top: 1.5rem;
+  padding: .6rem;
+  font-weight: 500;
+  border-radius: .6rem;
+  font-family: 'Cairo', sans-serif !important;
+  color: var(--mainColor);
+  border: 1px solid var(--mainColor);
+  margin-bottom: 1rem;
+}
+/* 3.3- Geral Anchor Tage */
+a{
+  text-decoration: none;
+  color: #ffffff;
+}
+a:hover{
+  color: #ffffff;
+  text-decoration: none;
+}
+.intl-tel-input{
+  width: 100%;
+}
+.error{
+  color: #eb596e;
+  font-size: 14px;
+  margin-top: 1rem;
+}
+.error h1{
+  font-size: 2rem;
+}
+.error p{
+  text-align: center;
+}
+.error svg{
+  font-size: 4rem;
+}
+.error h2{
+  font-size: 1.5rem;
+} 
+/* 3.4- Loading */
+#loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #263238;
+  z-index: 9999999999;
+}
+.spinner {
+  width: 40px;
+  height: 40px;
+  top: 45%;
+  position: relative;
+  margin: 0px auto;
+}
+.double-bounce1, .double-bounce2 {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: #f47e34;
+  opacity: 0.6;
+  position: absolute;
+  top: 0;
+  left: 0;
+  -webkit-animation: sk-bounce 2.0s infinite ease-in-out;
+  animation: sk-bounce 2.0s infinite ease-in-out;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.double-bounce2 {
+  -webkit-animation-delay: -1.0s;
+  animation-delay: -1.0s;
+}
+
+@-webkit-keyframes sk-bounce {
+  0%, 100% {
+    -webkit-transform: scale(0);
+  }
+  50% {
+    -webkit-transform: scale(1);
+  }
+}
+
+@keyframes sk-bounce {
+  0%, 100% {
+    transform: scale(0);
+    -webkit-transform: scale(0);
+  }
+  50% {
+    transform: scale(1);
+    -webkit-transform: scale(1);
+  }
 }
