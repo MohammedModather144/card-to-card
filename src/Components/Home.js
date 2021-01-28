@@ -198,7 +198,7 @@ const Home = () => {
                                 $('.dollar').html('The Transfer Dollar is ' + finalAmount.toFixed(2) + ' USD')
                                 $('.rsevie').removeClass('d-none')
                                 if (finalAmount<10 && finalAmount >0 ) {
-                                 $('.check') .html('Transfer am out must be at least $10')
+                                 $('.check') .html('Transfer amount must be at least $10')
                                 $('.check').removeClass('d-none');
                                 }else if(finalAmount>1000){
                                  $('.check') .html('Transfer limit is $1000.00')
