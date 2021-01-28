@@ -125,6 +125,7 @@ const Home = () => {
                          pattern="[0-9]{10}"
                           size="12"
                           maxLength="12"
+                          placeholder="Enter Phone Number"
                           required
                           onInput={e => e.target.value = e.target.value.replace(/[^0-9]/g, '')}
                           preferredCountries={['us']}
@@ -133,6 +134,8 @@ const Home = () => {
                           onPhoneNumberChange={(status, value, countryData, number, id) => {
                             setPhoneSender(number)
                             setErrorMessage('')
+                            $("input[type='tel']").attr("maxlength", "10")
+                           
                           }}
                         >
                         </IntlTelInput>
@@ -197,11 +200,11 @@ const Home = () => {
                                 $('.dollar').removeClass('d-none');
                                 $('.dollar').html('The Transfer Dollar is ' + finalAmount.toFixed(2) + ' USD')
                                 $('.rsevie').removeClass('d-none')
-                                if (finalAmount<10 && finalAmount >0 ) {
-                                 $('.check') .html('Transfer amount must be at least $10')
+                                if (finalAmount<5 && finalAmount >0 ) {
+                                 $('.check') .html('Transfer amount must be at least $5')
                                 $('.check').removeClass('d-none');
-                                }else if(finalAmount>1000){
-                                 $('.check') .html('Transfer limit is $1000.00')
+                                }else if(finalAmount>3000){
+                                 $('.check') .html('Transfer limit is $3000.00')
                                 $('.check').removeClass('d-none');
                                 }else{
                                 $('.check').addClass('d-none');
@@ -273,12 +276,14 @@ const Home = () => {
                         <IntlTelInput
                           pattern="[0-9]*"
                           required
+                          placeholder="Enter Phone Number"
                           onInput={e => e.target.value = e.target.value.replace(/[^0-9]/g, '')}
                           preferredCountries={['sd']}
                           containerClassName="intl-tel-input"
                           inputClassName="form-control"
                           onPhoneNumberChange={(status, value, countryData, number, id) => {
                             // console.log('onPhoneNumberBlur value', value + "  " + number);
+                            $("input[type='tel']").attr("maxlength", "10")
                             setPhoneReceiver(number)
                             setErrorMessage('')
                           }}
