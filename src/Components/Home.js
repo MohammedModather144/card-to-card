@@ -6,11 +6,7 @@ import { useHistory } from 'react-router';
 import IntlTelInput from 'react-intl-tel-input';
 import 'react-intl-tel-input/dist/main.css';
 import axios from 'axios';
-var querystring = require('querystring');
-// import { connect, useDispatch } from 'react-redux';
-// import { increace ,submitForm} from "../Action/action";
-// import { logout, isLogin } from '../utils';
-// import { bindActionCreators } from 'redux';
+
 const BASE_URL_Doller = 'https://api.enayapay.com/api/v2.0/get_rate/';
 const Home = () => {
   const history = useHistory();
@@ -31,6 +27,7 @@ const Home = () => {
   const [cardNumberReceiver, setCardNumberReceiver] = useState();
   const [dollerPrice, setDollerPrice] = useState();
   const [message, setMessage] = useState();
+  const [dollar, setDollar] = useState();
   useEffect(() => {
     $('#loader').fadeOut(5000);
     const data = {
@@ -39,8 +36,6 @@ const Home = () => {
     axios.post(BASE_URL_Doller, data, {
       mode: "cors",
       headers: {
-        'Access-Control-Allow-Credentials':'',
-        'Access-Control-Allow-Origin': '',
         'x-api-key': 'b6c0d5e7-c4b0-410e-a8f6-2b810fea9c44',
         'token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImJha2hlZXQiLCJleHBpcnkiOiIyMDIxLTAyLTI0In0.3B3fsI3gWvV2Uks9NOx4UeeJNatJAvizrM5A0vaAjgw',
         'Content-Type': 'application/json'
@@ -54,6 +49,11 @@ const Home = () => {
 
   function handleSubmit(e) {
     e.preventDefault();
+    if(dollar<10){
+
+    }else if(dollar>1000){
+
+    }else{
     history.push({
       pathname: '/confirm',
       // search: '?query=abc',
@@ -72,9 +72,10 @@ const Home = () => {
         rec_phone_number: phoneReceiver,
         amount: amount,
         rec_message: message,
+        amount_sud: dollar,
       }
     });
-
+    }
   }
   return (
     <>
@@ -121,7 +122,7 @@ const Home = () => {
                       <div className="form-group">
                         <label htmlFor="phone-number-sender">Phone</label>
                         <IntlTelInput
-                          pattern="[0-9]{10}"
+                         pattern="[0-9]{10}"
                           size="12"
                           maxLength="12"
                           required
@@ -130,7 +131,6 @@ const Home = () => {
                           containerClassName="intl-tel-input"
                           inputClassName="form-control"
                           onPhoneNumberChange={(status, value, countryData, number, id) => {
-                            // console.log('onPhoneNumberBlur value', value + "  " + number);
                             setPhoneSender(number)
                             setErrorMessage('')
                           }}
@@ -174,9 +174,11 @@ const Home = () => {
                     <div className="col-md-6">
                       <div className="form-group">
                         <label htmlFor="expiry-date">Expiry Date</label>
-                        <input type="month" id="expiry-date" className="form-control" placeholder="12/6" required
-                          onChange={e =>
-                            setExpiryDateSender(moment(e.target.value).format('MMYY'))
+                        <input type="tel" id="expiry-date" className="form-control" placeholder="MM/YY" maxLength="5" required 
+                          onChange={e =>{
+                          e.target.value=e.target.value.replace(/^(\d\d)(\d)$/g,'$1/$2').replace(/^(\d\d\/\d\d)(\d+)$/g,'$1/$2').replace(/[^\d\/]/g,'')
+                            setExpiryDateSender(e.target.value.replace(/\//g, ''))
+                          }
                           } />
                         <div className="help-block with-errors"></div>
                       </div>
@@ -184,21 +186,43 @@ const Home = () => {
                     <div className="col-md-6">
                       <div className="form-group">
                         <label htmlFor="amount">Payment Amount SDG</label>
-                        <input type="number" id="amount" className="form-control" placeholder="0" required
+                        <div class="amount-parent">
+                        <input type="tel" id="amount" className="form-control" placeholder="0" required maxLength="6"
                           onInput={e => e.target.value = e.target.value.replace(/[^0-9]/g, '')}
                           onChange={
                             e => {
                               if (e.target.value > 0) {
                                 let amount = e.target.value;
                                 let finalAmount = amount / dollerPrice;
-                                $('.doller').removeClass('d-none');
-                                $('.doller').html('The Transfer Doller is ' + finalAmount.toFixed(2) + ' USD')
+                                $('.dollar').removeClass('d-none');
+                                $('.dollar').html('The Transfer Dollar is ' + finalAmount.toFixed(2) + ' USD')
                                 $('.rsevie').removeClass('d-none')
+                                if (finalAmount<10 && finalAmount >0 ) {
+                                 $('.check') .html('Transfer am out must be at least $10')
+                                $('.check').removeClass('d-none');
+                                }else if(finalAmount>1000){
+                                 $('.check') .html('Transfer limit is $1000.00')
+                                $('.check').removeClass('d-none');
+                                }else{
+                                $('.check').addClass('d-none');
+                                }
+                              setDollar(finalAmount)
+                              }else{
+                                $('.check').addClass('d-none');
+                                $('.dollar').addClass('d-none');
+                              setAmount()
+                              setDollar()
                               }
                               setAmount(e.target.value)
                             }
                           } />
-                        <p className="doller d-none ">The Transfer Doller is 0 USD</p>
+                           <div class="amount">
+                            <p>SDG</p>
+                        </div>
+                        <span class="dot">.00</span>
+                        </div>
+                        <p className="doller dollar d-none ">The Transfer Dollar is 0 USD</p>
+                        <p className="with-errors check d-none "></p>
                         <div className="help-block with-errors"></div>
                       </div>
                     </div>

@@ -1,6 +1,7 @@
 @media(max-width:767px){
   .personal-information .form-info{
     width: 85vw;
+    margin: auto;
   }
   .personal-information .form-info .left {
     border-top-left-radius: 1rem;
@@ -8,5 +9,8 @@
   }
   .personal-information .form-info .right {
     border-top-right-radius: 1rem;
+  }
+  .personal-information.succces .form-info{
+    width: 85vw;
   }
 }

@@ -51,10 +51,19 @@ function Worng() {
             state: {
               detail: res.data,
               rec_message: location.state.rec_message,
+              phone_number: location.state.phone_number,
+              sen_first_name: location.state.sen_first_name,
+              sen_last_name: location.state.sen_last_name,
+              rec_first_name: location.state.rec_first_name,
+              rec_last_name: location.state.rec_last_name,
+              rec_phone_number: location.state.rec_phone_number,
+              banckNameLocal: location.state.banckNameLocal,
+              banckNameInternational: location.state.banckNameInternational
             }
           });
 
         } else if (res.data.status === "failed") {
+          sessionStorage.setItem("takafully", "UserLogin");
           $('#loader').fadeOut(2000);
           history.push({
             pathname: '/worng',
