@@ -125,7 +125,6 @@ const Home = () => {
                          pattern="[0-9]{10}"
                           size="12"
                           maxLength="12"
-                          placeholder="Enter Phone Number"
                           required
                           onInput={e => e.target.value = e.target.value.replace(/[^0-9]/g, '')}
                           preferredCountries={['us']}
@@ -134,7 +133,7 @@ const Home = () => {
                           onPhoneNumberChange={(status, value, countryData, number, id) => {
                             setPhoneSender(number)
                             setErrorMessage('')
-                            $("input[type='tel']").attr("maxlength", "10")
+                            $(".intl-tel-input input[type='tel']").attr("maxlength", "10")
                            
                           }}
                         >
@@ -158,7 +157,7 @@ const Home = () => {
                     <div className="col-md-6">
                       <div className="form-group">
                         <label htmlFor="card-number-sender">Card Number</label>
-                        <input type="tel" id="card-number-sender" className="form-control" maxLength="19" minLength="19" placeholder="xxxx-xxxx-xxxx-xxxx" pattern="[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{4}"
+                        <input type="text" id="card-number-sender" className="form-control" maxLength="19" minLength="19" placeholder="xxxx-xxxx-xxxx-xxxx" pattern="[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{4}"
                           onInput={e => e.target.value = e.target.value.replace(/[^0-9]/g, '')}
                           onChange={
                             e => {
@@ -276,14 +275,13 @@ const Home = () => {
                         <IntlTelInput
                           pattern="[0-9]*"
                           required
-                          placeholder="Enter Phone Number"
                           onInput={e => e.target.value = e.target.value.replace(/[^0-9]/g, '')}
                           preferredCountries={['sd']}
                           containerClassName="intl-tel-input"
                           inputClassName="form-control"
                           onPhoneNumberChange={(status, value, countryData, number, id) => {
                             // console.log('onPhoneNumberBlur value', value + "  " + number);
-                            $("input[type='tel']").attr("maxlength", "10")
+                            $(".intl-tel-input input[type='tel']").attr("maxlength", "10")
                             setPhoneReceiver(number)
                             setErrorMessage('')
                           }}
